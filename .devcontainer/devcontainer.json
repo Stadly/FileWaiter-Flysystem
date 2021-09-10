@@ -1,0 +1,26 @@
+{
+    "name": "Stadly FileWaiter-Flysystem",
+    "context": "php",
+    "dockerFile": "php/Dockerfile",
+
+    // Extensions to install in the container.
+    "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "eamodio.gitlens",
+        "editorconfig.editorconfig",
+        "felixfbecker.php-debug",
+        "jaakkosadeharju.permute-selections",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers",
+        "recca0120.vscode-phpunit",
+        "xyz.local-history"
+    ],
+
+    // Run the installation script after creating the container.
+    "postCreateCommand": "sh .devcontainer/install.sh",
+
+    // Make Docker accessible from within the container.
+    "mounts": [
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    ]
+}
