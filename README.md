@@ -20,7 +20,20 @@ $ composer require stadly/file-waiter-flysystem
 ## Usage
 
 ``` php
-// TODO
+use Stadly\FileWaiter\Adapter\Flysystem;
+use Stadly\FileWaiter\File;
+use Stadly\FileWaiter\Waiter;
+
+$flysystem = new \League\Flysystem\Filesystem($adapter);    // Any Flysystem adapter.
+$filePath = '/path/to/file/in/flysystem';
+
+$streamFactory = new \GuzzleHttp\Psr7\HttpFactory();        // Any PSR-17 compatible stream factory.
+$file = new File(new Flysystem($flysystem, $filePath, $streamFactory));
+
+$responseFactory = new \GuzzleHttp\Psr7\HttpFactory();      // Any PSR-17 compatible response factory.
+$waiter = new Waiter($file, $responseFactory);
+
+// Serve the file stored in Flysystem using FileWaiter.
 ```
 
 ## Change log
